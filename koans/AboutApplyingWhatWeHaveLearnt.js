@@ -97,7 +97,7 @@ describe("About Applying What We Have Learnt", function() {
 
     /* chain() together map(), flatten() and reduce() */
 
-    var result = _(product.ingredients).chain()
+    var result = _.chain(product)
                      .flatten()
                      .map(function(x) { return x+1 } )
                      .reduce(function (sum, x) { return sum + x })

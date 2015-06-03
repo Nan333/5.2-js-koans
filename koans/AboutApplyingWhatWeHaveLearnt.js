@@ -40,6 +40,13 @@ describe("About Applying What We Have Learnt", function() {
       var productsICanEat = [];
 
       /* solve using filter() & all() / any() */
+      if (product.containsNuts.any() === true || product.hasMushrooms.any() === true) {
+        return "I can't eat that!";
+      }
+
+        else {
+          return productsICanEat.push(product.all());
+        }
 
       expect(productsICanEat.length).toBe(0);
   });
@@ -62,6 +69,13 @@ describe("About Applying What We Have Learnt", function() {
 
     var sum = 0;    /* try chaining range() and reduce() */
 
+    var sum = _.chain(_.range(1000))
+             _.reduce(function(a,b)) {
+               if(b % 3 === 0 || b % 5 === 0) {
+                 return(a+b)
+               }
+             });
+
     expect(233168).toBe(233168);
   });
 
@@ -83,12 +97,23 @@ describe("About Applying What We Have Learnt", function() {
 
     /* chain() together map(), flatten() and reduce() */
 
+    var result = _(product.ingredients).chain()
+                     .flatten()
+                     .map(function(x) { return x+1 } )
+                     .reduce(function (sum, x) { return sum + x })
+                     .value();
+
+    expect(result).toEqual(6);
+});
+
+});
+
     expect(ingredientCount['mushrooms']).toBe(undefined);
   });
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
+
   it("should find the largest prime factor of a composite number", function () {
 
   });
@@ -109,5 +134,5 @@ describe("About Applying What We Have Learnt", function() {
   it("should find the 10001st prime", function () {
 
   });
-  */
+
 });
